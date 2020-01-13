@@ -16,13 +16,13 @@
     <div class="todos" v-show="allTodos">
       <div
         @click="onDblClick(todo)"
-        :key="todo.id"
+        :key="todo._id"
         v-for="todo in allTodos"
         class="todo"
         v-bind:class="{'is-complete':todo.completed}"
       >
         {{ todo.title }}
-        <i @click="deleteTodo(todo.id)" class="fas fa-trash-alt"></i>
+        <i @click="deleteTodo(todo._id)" class="fas fa-trash-alt"></i>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@ export default {
     ...mapActions(["fetchTodos", "deleteTodo", "updateTodo"]),
     onDblClick(todo) {
       const updTodo = {
-        id: todo.id,
+        _id: todo._id,
         title: todo.title,
         completed: !todo.completed
       };
